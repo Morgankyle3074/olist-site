@@ -1,3 +1,4 @@
+/* style.css */
 :root{
   --bg: #f5f6f8;
   --panel: #ffffff;
@@ -5,10 +6,7 @@
   --muted: #667085;
   --border: #e4e7ec;
   --shadow: 0 10px 30px rgba(16, 24, 40, 0.08);
-
-  /* Olist vibe (matches your dashboard greens) */
   --accent: #0b3d2e;
-
   --radius: 14px;
 }
 
@@ -192,13 +190,14 @@ body{
   flex-direction: column;
 }
 
+/* ✅ FIX: keep descriptions directly under images */
 .desc{
   max-width: 820px;
   padding-top: 14px;
   line-height: 1.7;
   font-size: 14.8px;
   color: var(--muted);
-  margin-top: auto;
+  margin-top: 8px; /* was auto */
 }
 
 /* LISTS */
