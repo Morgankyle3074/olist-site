@@ -1,0 +1,289 @@
+:root{
+  --bg: #f5f6f8;
+  --panel: #ffffff;
+  --text: #101828;
+  --muted: #667085;
+  --border: #e4e7ec;
+  --shadow: 0 10px 30px rgba(16, 24, 40, 0.08);
+
+  /* Olist vibe (matches your dashboard greens) */
+  --accent: #0b3d2e;
+
+  --radius: 14px;
+}
+
+*{ box-sizing: border-box; }
+
+body{
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container{
+  width: min(1100px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* HEADER */
+.site-header{
+  background: white;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.brand{
+  font-weight: bold;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-dot{
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.nav-links a{
+  margin-left: 18px;
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.nav-links a:hover{
+  color: var(--text);
+}
+
+/* HERO */
+.hero{
+  padding: 40px 0;
+}
+
+.hero-grid{
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr;
+  gap: 22px;
+  align-items: start;
+}
+
+.subtitle{
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+/* CARDS */
+.card{
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-top: 18px;
+  padding: 18px 22px;
+}
+
+.card-header{
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.card-footer{
+  padding-top: 14px;
+  margin-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.card p{
+  max-width: 820px;
+  line-height: 1.75;
+  font-size: 15.5px;
+}
+
+.card p + p{
+  margin-top: 10px;
+}
+
+/* IMAGES */
+.img{
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+}
+
+/* PAPER PANEL */
+.paper-card{
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.paper-card .card-header{
+  padding: 18px 22px 12px;
+  margin: 0;
+}
+
+.paper-frame{
+  flex: 1;
+  width: 100%;
+  border: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  height: min(720px, calc(100vh - 180px));
+  min-height: 520px;
+}
+
+.pdf{
+  width: 100%;
+  border: none;
+}
+
+/* Tableau embed container */
+.tableau-embed{
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+/* SECTIONS */
+.section{
+  padding: 40px 0;
+}
+
+.section-head h2{
+  margin-bottom: 6px;
+}
+
+.section-head p{
+  margin-top: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* GRID */
+.two-col{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.two-col.equal{
+  align-items: stretch;
+}
+
+.two-col.equal .card{
+  display: flex;
+  flex-direction: column;
+}
+
+.desc{
+  max-width: 820px;
+  padding-top: 14px;
+  line-height: 1.7;
+  font-size: 14.8px;
+  color: var(--muted);
+  margin-top: auto;
+}
+
+/* LISTS */
+.bullets{
+  max-width: 820px;
+  margin: 12px 0 14px 18px;
+  line-height: 1.8;
+}
+
+.bullets li{
+  margin: 4px 0;
+}
+
+/* CALLOUT */
+.callout{
+  max-width: 820px;
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: #ecf7f3;
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  font-size: 14.8px;
+}
+
+/* BUTTONS */
+.button{
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.button-outline{
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: white;
+}
+
+.button-outline:hover{
+  background: var(--bg);
+}
+
+/* STICKY paper card */
+.sticky{
+  position: sticky;
+  top: 90px;
+}
+
+.insight-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.insight{
+  padding: 14px 16px;
+  background: #f9fafb;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.insight h4{
+  margin: 0 0 6px;
+  font-size: 14px;
+}
+
+.insight p{
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* Responsive */
+@media (max-width: 960px){
+  .hero-grid{
+    grid-template-columns: 1fr;
+  }
+  .sticky{
+    position: static;
+  }
+  .two-col{
+    grid-template-columns: 1fr;
+  }
+}
