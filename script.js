@@ -1,7 +1,4 @@
-// Smooth quality-of-life JS (no frameworks needed)
-
-// Set footer year
-document.getElementById("year").textContent = new Date().getFullYear();
+// script.js
 
 // Highlight active nav link while scrolling
 const sections = document.querySelectorAll("section[id]");
@@ -21,3 +18,7 @@ const setActive = () => {
 
 window.addEventListener("scroll", setActive);
 setActive();
+
+// Footer year (safe if the element exists)
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
