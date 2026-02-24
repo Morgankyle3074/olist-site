@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Olist Bottleneck Analysis | Fulfillment Performance (2016–2018)</title>
+  <meta name="description" content="Fulfillment performance and bottleneck diagnostics for the Olist Brazilian e-commerce dataset (2016–2018)." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+    <div class="brand">
+      <span class="brand-dot"></span>
+      <span>Olist Bottleneck Analysis</span>
+    </div>
+
+    <nav class="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="#paper">Paper</a>
+      <a href="#charts">Charts</a>
+      <a href="#interpretation">Interpretation</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="overview">
+  <div class="container hero-grid">
+
+    <div class="hero-left">
+      <h1>Fulfillment Performance & Bottleneck Diagnostics</h1>
+
+      <p class="subtitle">
+        Systems-level analysis of delivery delays in the Olist Brazilian Marketplace dataset (2016–2018),
+        identifying where delays originate and which levers have the highest operational impact.
+      </p>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>Tableau Dashboard Preview</h2>
+          <p class="muted">Interactive bottleneck exploration (late rate, cycle time, last-mile time, delivery delay).</p>
+        </div>
+
+        <img class="img" src="assets/dashboard.png" alt="Olist Bottleneck Analysis dashboard preview" />
+
+        <div class="card-footer">
+          <a class="button button-outline"
+             href="https://public.tableau.com/app/profile/kyle.morgan3469/viz/OlistBottleneckAnalysis/Dashboard1?publish=yes"
+             target="_blank" rel="noreferrer">
+             View Interactive Dashboard (Tableau Public)
+          </a>
+        </div>
+      </div>
+
+      <!-- OPTIONAL: Inline Tableau Embed (keeps your ETF layout but adds a live dashboard section) -->
+      <div class="card" id="tableau">
+        <div class="card-header">
+          <h2>Embedded Interactive Dashboard</h2>
+          <p class="muted">Use filters to explore performance by time window, items/order, and geography.</p>
+        </div>
+
+        <div class="tableau-embed">
+          <div class="tableauPlaceholder" id="vizOlist" style="position: relative;">
+            <noscript>
+              <a href="https://public.tableau.com/app/profile/kyle.morgan3469/viz/OlistBottleneckAnalysis/Dashboard1?publish=yes">
+                <img alt="Olist Bottleneck Analysis" src="https://public.tableau.com/static/images/Ol/OlistBottleneckAnalysis/Dashboard1/1_rss.png" style="border: none;" />
+              </a>
+            </noscript>
+            <object class="tableauViz" style="display:none;">
+              <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F" />
+              <param name="embed_code_version" value="3" />
+              <param name="site_root" value="" />
+              <param name="name" value="OlistBottleneckAnalysis/Dashboard1" />
+              <param name="tabs" value="no" />
+              <param name="toolbar" value="yes" />
+              <param name="static_image" value="https://public.tableau.com/static/images/Ol/OlistBottleneckAnalysis/Dashboard1/1.png" />
+              <param name="animate_transition" value="yes" />
+              <param name="display_static_image" value="yes" />
+              <param name="display_spinner" value="yes" />
+              <param name="display_overlay" value="yes" />
+              <param name="display_count" value="yes" />
+              <param name="language" value="en-US" />
+            </object>
+          </div>
+        </div>
+
+        <div class="desc">
+          This dashboard supports bottleneck diagnosis by combining last-mile time, cycle time, delay distributions,
+          order complexity, and regional variation into a single interactive view.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PAPER -->
+    <aside class="hero-right" id="paper">
+      <div class="card sticky paper-card">
+        <div class="card-header">
+          <h2>Research Paper</h2>
+          <p class="muted">Methodology, engineered metrics, and findings for the Olist marketplace dataset.</p>
+        </div>
+
+        <iframe
+          class="pdf paper-frame"
+          src="assets/Fulfillment%20performance%20and%20bottleneck%20analysis.pdf"
+          title="Fulfillment performance and bottleneck analysis">
+        </iframe>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+<!-- BUSINESS PROBLEM -->
+<section class="section">
+  <div class="container">
+
+    <div class="section-head">
+      <h2>Business Problem</h2>
+    </div>
+
+    <div class="card">
+      <p>
+        Marketplace e-commerce fulfillment is a chained system: approval workflows, seller processing, carrier handoff,
+        and last-mile delivery. Disruption at any point can cascade into customer-visible delays.
+      </p>
+
+      <p>
+        The core question is stage-level: <strong>Which part of the fulfillment pipeline contributes most to late deliveries?</strong>
+        Instead of looking at isolated orders, this project treats fulfillment as a system and measures how variability
+        propagates through the pipeline to create late outcomes. :contentReference[oaicite:1]{index=1}
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CHARTS -->
+<section class="section" id="charts">
+  <div class="container">
+
+    <div class="section-head">
+      <h2>Charts & Visual Findings</h2>
+      <p class="muted">Bottleneck signals from last-mile time, order complexity, and delay distribution.</p>
+    </div>
+
+    <div class="two-col equal">
+
+      <!-- ORDER COMPLEXITY -->
+      <div class="card">
+        <div class="card-header">
+          <h3>Order Complexity vs Fulfillment Time</h3>
+          <p class="muted">Items per order shows limited explanatory power for delay behavior.</p>
+        </div>
+
+        <img class="img" src="assets/chart-items.png" alt="Scatterplot of items per order vs total cycle time (late vs on time)" />
+
+        <div class="desc">
+          The relationship between items per order and total cycle time is weak, indicating complexity is not a primary delay driver.
+          Variability concentrates among low-complexity orders—challenging the assumption that “bigger orders = later deliveries.” :contentReference[oaicite:2]{index=2}
+        </div>
+      </div>
+
+      <!-- DELAY DISTRIBUTION -->
+      <div class="card">
+        <div class="card-header">
+          <h3>Delivery Delay Distribution</h3>
+          <p class="muted">Early-fulfillment bias with tail-risk late exceptions.</p>
+        </div>
+
+        <img class="img" src="assets/box-plot.png" alt="Boxplot of delivery delay distribution by late status" />
+
+        <div class="desc">
+          Deliveries skew early/on-time overall, but a minority of orders experience extreme lateness. Operationally, the delay story is
+          driven by tail events rather than uniform underperformance. :contentReference[oaicite:3]{index=3}
+        </div>
+      </div>
+
+    </div>
+
+    <!-- LAST-MILE vs DELAY -->
+    <div class="card">
+      <div class="card-header">
+        <h3>Last-Mile Duration vs Delivery Delay</h3>
+        <p class="muted">A direct relationship: longer last-mile transit corresponds to larger delays.</p>
+      </div>
+
+      <img class="img" src="assets/chart-scatter.png" alt="Scatterplot of last-mile time hours vs delivery delay (capped)" />
+
+      <div class="desc">
+        The upward pattern shows delay severity increases with last-mile duration. As last-mile time grows, variability widens too,
+        reflecting rising volatility and risk accumulation in extended delivery networks. :contentReference[oaicite:4]{index=4}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- INTERPRETATION -->
+<section class="section" id="interpretation">
+  <div class="container">
+
+    <div class="section-head">
+      <h2>Project Thought Process</h2>
+    </div>
+
+    <div class="card">
+      <p>
+        This project reframes fulfillment as a sequence of measurable stages. Raw event timestamps were transformed into
+        operational metrics (approval time, seller processing duration, last-mile time, total cycle time, and delivery delay)
+        to support bottleneck diagnosis and delay propagation analysis. :contentReference[oaicite:5]{index=5}
+      </p>
+
+      <ul class="bullets">
+        <li><strong>Goal:</strong> Identify which fulfillment stage dominates delay creation.</li>
+        <li><strong>Method:</strong> Stage-level metric engineering (SQL) + visual diagnostics (Tableau).</li>
+        <li><strong>Primary bottleneck:</strong> Last-mile delivery dominates both cycle time and delay severity. :contentReference[oaicite:6]{index=6}</li>
+        <li><strong>Secondary insight:</strong> Order complexity is not a strong predictor of delays. :contentReference[oaicite:7]{index=7}</li>
+      </ul>
+
+      <div class="insight-grid">
+
+        <div class="insight">
+          <h4>Systems-Level Lens</h4>
+          <p>
+            Instead of treating late deliveries as random, the analysis tests where variability concentrates across the pipeline,
+            and whether late outcomes trace back to a dominant stage.
+          </p>
+        </div>
+
+        <div class="insight">
+          <h4>Dominant Driver</h4>
+          <p>
+            Last-mile duration is the strongest contributor to total fulfillment time and is structurally linked to late delivery outcomes,
+            making it the highest-leverage optimization target. :contentReference[oaicite:8]{index=8}
+          </p>
+        </div>
+
+        <div class="insight">
+          <h4>Delay Behavior</h4>
+          <p>
+            The network shows early-delivery clustering alongside volatile late exceptions—classic “tail-risk” delay behavior,
+            consistent with real-world logistics volatility. :contentReference[oaicite:9]{index=9}
+          </p>
+        </div>
+
+        <div class="insight">
+          <h4>Actionable Direction</h4>
+          <p>
+            Interventions focused on last-mile optimization and regional segmentation offer higher expected impact than upstream tweaks
+            to approval or seller processing. :contentReference[oaicite:10]{index=10}
+          </p>
+        </div>
+
+      </div>
+
+      <div class="callout">
+        <strong>Operational Takeaway:</strong>
+        If you improve one thing first, improve the last mile—because that’s where cycle time expands and where lateness scales.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script src="script.js"></script>
+<script type="text/javascript" src="https://public.tableau.com/javascripts/api/viz_v1.js"></script>
+<script>
+  // Make the tableau embed responsive
+  (function () {
+    var divElement = document.getElementById('vizOlist');
+    if (!divElement) return;
+    var vizElement = divElement.getElementsByTagName('object')[0];
+    if (!vizElement) return;
+
+    function resize() {
+      var w = divElement.offsetWidth;
+      vizElement.style.width = '100%';
+      vizElement.style.height = Math.min(860, Math.max(520, Math.round(w * 0.62))) + 'px';
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+  })();
+</script>
+
+</body>
+</html>
