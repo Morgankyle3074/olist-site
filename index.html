@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,53 +28,69 @@
 </header>
 
 <!-- HERO -->
-<!-- Inline Tableau Embed -->
-<div class="card" id="tableau">
-  <div class="card-header">
-    <h2>Embedded Interactive Dashboard</h2>
-    <p class="muted">Use filters to explore performance by time window, items/order, and geography.</p>
-  </div>
+<section class="hero" id="overview">
+  <div class="container hero-grid">
 
-  <div class="tableau-embed">
-    <div class="tableauPlaceholder" id="vizOlist" style="position: relative;">
-      <noscript>
-        <a href="https://public.tableau.com/app/profile/kyle.morgan3469/viz/OlistBottleneckAnalysis/Dashboard1?publish=yes">
-          <img alt="Olist Bottleneck Analysis" src="https://public.tableau.com/static/images/Ol/OlistBottleneckAnalysis/Dashboard1/1_rss.png" style="border: none;" />
-        </a>
-      </noscript>
-      <object class="tableauViz" style="display:none;">
-        <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F" />
-        <param name="embed_code_version" value="3" />
-        <param name="site_root" value="" />
-        <param name="name" value="OlistBottleneckAnalysis/Dashboard1" />
-        <param name="tabs" value="no" />
-        <param name="toolbar" value="yes" />
-        <param name="static_image" value="https://public.tableau.com/static/images/Ol/OlistBottleneckAnalysis/Dashboard1/1.png" />
-        <param name="animate_transition" value="yes" />
-        <param name="display_static_image" value="yes" />
-        <param name="display_spinner" value="yes" />
-        <param name="display_overlay" value="yes" />
-        <param name="display_count" value="yes" />
-        <param name="language" value="en-US" />
-      </object>
+    <!-- LEFT: Title + Embedded Tableau -->
+    <div class="hero-left">
+      <h1>Fulfillment Performance & Bottleneck Diagnostics</h1>
+
+      <p class="subtitle">
+        Systems-level analysis of delivery delays in the Olist Brazilian Marketplace dataset (2016–2018),
+        identifying where delays originate and which levers have the highest operational impact.
+      </p>
+
+      <!-- Inline Tableau Embed -->
+      <div class="card" id="tableau">
+        <div class="card-header">
+          <h2>Embedded Interactive Dashboard</h2>
+          <p class="muted">Use filters to explore performance by time window, items/order, and geography.</p>
+        </div>
+
+        <div class="tableau-embed">
+          <div class="tableauPlaceholder" id="vizOlist" style="position: relative;">
+            <noscript>
+              <a href="https://public.tableau.com/app/profile/kyle.morgan3469/viz/OlistBottleneckAnalysis/Dashboard1?publish=yes">
+                <img alt="Olist Bottleneck Analysis"
+                     src="https://public.tableau.com/static/images/Ol/OlistBottleneckAnalysis/Dashboard1/1_rss.png"
+                     style="border: none;" />
+              </a>
+            </noscript>
+
+            <object class="tableauViz" style="display:none;">
+              <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F" />
+              <param name="embed_code_version" value="3" />
+              <param name="site_root" value="" />
+              <param name="name" value="OlistBottleneckAnalysis/Dashboard1" />
+              <param name="tabs" value="no" />
+              <param name="toolbar" value="yes" />
+              <param name="static_image" value="https://public.tableau.com/static/images/Ol/OlistBottleneckAnalysis/Dashboard1/1.png" />
+              <param name="animate_transition" value="yes" />
+              <param name="display_static_image" value="yes" />
+              <param name="display_spinner" value="yes" />
+              <param name="display_overlay" value="yes" />
+              <param name="display_count" value="yes" />
+              <param name="language" value="en-US" />
+            </object>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <a class="button button-outline"
+             href="https://public.tableau.com/app/profile/kyle.morgan3469/viz/OlistBottleneckAnalysis/Dashboard1?publish=yes"
+             target="_blank" rel="noreferrer">
+             Open in Tableau Public
+          </a>
+        </div>
+
+        <div class="desc">
+          This dashboard supports bottleneck diagnosis by combining last-mile time, cycle time, delay distributions,
+          order complexity, and regional variation into a single interactive view.
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="card-footer">
-    <a class="button button-outline"
-       href="https://public.tableau.com/app/profile/kyle.morgan3469/viz/OlistBottleneckAnalysis/Dashboard1?publish=yes"
-       target="_blank" rel="noreferrer">
-       Open in Tableau Public
-    </a>
-  </div>
-
-  <div class="desc">
-    This dashboard supports bottleneck diagnosis by combining last-mile time, cycle time, delay distributions,
-    order complexity, and regional variation into a single interactive view.
-  </div>
-</div>
-
-    <!-- PAPER -->
+    <!-- RIGHT: Paper -->
     <aside class="hero-right" id="paper">
       <div class="card sticky paper-card">
         <div class="card-header">
@@ -109,7 +126,7 @@
       <p>
         The core question is stage-level: <strong>Which part of the fulfillment pipeline contributes most to late deliveries?</strong>
         Instead of looking at isolated orders, this project treats fulfillment as a system and measures how variability
-        propagates through the pipeline to create late outcomes. 
+        propagates through the pipeline to create late outcomes.
       </p>
     </div>
 
@@ -138,7 +155,7 @@
 
         <div class="desc">
           The relationship between items per order and total cycle time is weak, indicating complexity is not a primary delay driver.
-          Variability concentrates among low-complexity orders—challenging the assumption that “bigger orders = later deliveries.” 
+          Variability concentrates among low-complexity orders—challenging the assumption that “bigger orders = later deliveries.”
         </div>
       </div>
 
@@ -153,7 +170,7 @@
 
         <div class="desc">
           Deliveries skew early/on-time overall, but a minority of orders experience extreme lateness. Operationally, the delay story is
-          driven by tail events rather than uniform underperformance. 
+          driven by tail events rather than uniform underperformance.
         </div>
       </div>
 
@@ -170,7 +187,7 @@
 
       <div class="desc">
         The upward pattern shows delay severity increases with last-mile duration. As last-mile time grows, variability widens too,
-        reflecting rising volatility and risk accumulation in extended delivery networks. 
+        reflecting rising volatility and risk accumulation in extended delivery networks.
       </div>
     </div>
 
@@ -189,14 +206,14 @@
       <p>
         This project reframes fulfillment as a sequence of measurable stages. Raw event timestamps were transformed into
         operational metrics (approval time, seller processing duration, last-mile time, total cycle time, and delivery delay)
-        to support bottleneck diagnosis and delay propagation analysis. 
+        to support bottleneck diagnosis and delay propagation analysis.
       </p>
 
       <ul class="bullets">
         <li><strong>Goal:</strong> Identify which fulfillment stage dominates delay creation.</li>
         <li><strong>Method:</strong> Stage-level metric engineering (SQL) + visual diagnostics (Tableau).</li>
-        <li><strong>Primary bottleneck:</strong> Last-mile delivery dominates both cycle time and delay severity. 
-        <li><strong>Secondary insight:</strong> Order complexity is not a strong predictor of delays.
+        <li><strong>Primary bottleneck:</strong> Last-mile delivery dominates both cycle time and delay severity.</li>
+        <li><strong>Secondary insight:</strong> Order complexity is not a strong predictor of delays.</li>
       </ul>
 
       <div class="insight-grid">
@@ -213,7 +230,7 @@
           <h4>Dominant Driver</h4>
           <p>
             Last-mile duration is the strongest contributor to total fulfillment time and is structurally linked to late delivery outcomes,
-            making it the highest-leverage optimization target. 
+            making it the highest-leverage optimization target.
           </p>
         </div>
 
@@ -221,7 +238,7 @@
           <h4>Delay Behavior</h4>
           <p>
             The network shows early-delivery clustering alongside volatile late exceptions—classic “tail-risk” delay behavior,
-            consistent with real-world logistics volatility. 
+            consistent with real-world logistics volatility.
           </p>
         </div>
 
@@ -229,7 +246,7 @@
           <h4>Actionable Direction</h4>
           <p>
             Interventions focused on last-mile optimization and regional segmentation offer higher expected impact than upstream tweaks
-            to approval or seller processing. 
+            to approval or seller processing.
           </p>
         </div>
 
